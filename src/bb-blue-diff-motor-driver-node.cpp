@@ -39,8 +39,10 @@
 
 #include <rc/motor.h>
 
-#include <tf/transform_broadcaster.h>
+#include <tf2_ros/transform_broadcaster.h>
+#include <tf2/LinearMath/Quaternion.h>
 #include <nav_msgs/Odometry.h>
+#include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 
 // global variables
 ros::Time g_msg_received;
@@ -101,6 +103,13 @@ void cmd_velCallback(const geometry_msgs::Twist::ConstPtr& cmd_vel)
   g_driving = 1;
 }
 
+auto createQuaternionMsgFromYaw(double yaw)
+{
+  tf2::Quaternion q;
+  q.setRPY(0, 0, yaw);
+  return tf2::toMsg(q);
+}
+
 int main(int argc, char** argv)
 {
   // ROS and node initialize
@@ -149,7 +158,7 @@ int main(int argc, char** argv)
 
   // odometry publisher
   ros::Publisher odom_pub = n.advertise<nav_msgs::Odometry>("odom", 50);
-  tf::TransformBroadcaster odom_broadcaster;
+  tf2_ros::TransformBroadcaster odom_broadcaster;
 
   // cmd_vel subscriber 
   ros::Subscriber sub = n.subscribe("cmd_vel", 100, cmd_velCallback);
@@ -202,7 +211,7 @@ int main(int argc, char** argv)
     th += delta_th;
 
     // since all odometry is 6DOF we'll need a quaternion created from yaw
-    geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(th);
+    geometry_msgs::Quaternion odom_quat = createQuaternionMsgFromYaw(th);
 
     // first, we'll publish the transform over tf
     geometry_msgs::TransformStamped odom_trans;
