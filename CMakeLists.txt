@@ -11,9 +11,10 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
-  tf
+  tf2
   geometry_msgs
   nav_msgs
+  sensor_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -154,7 +155,7 @@ include_directories(
 # )
 
 add_executable(diff_motor_driver src/bb-blue-diff-motor-driver-node.cpp)
-target_link_libraries(diff_motor_driver ${catkin_LIBRARIES} robotcontrol)
+target_link_libraries(diff_motor_driver ${catkin_LIBRARIES} robotcontrol tf2_ros)
 
 add_executable(imu_pub_node src/bb-blue-imu-mpu9250-node.cpp)
 target_link_libraries(imu_pub_node ${catkin_LIBRARIES} robotcontrol)
