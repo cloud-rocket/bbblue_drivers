@@ -1,5 +1,14 @@
 # bbblue_drivers
 
+---
+June 3, 2022 (by cloud-rocket)
+
+* Updated to support ROS Nuetic from Ubuntu 20.04 / Debian 11.3
+
+
+---
+
+
 some ROS drivers for the Beaglbone Blue
 
 >WIP!!! Ugly code included!!!
