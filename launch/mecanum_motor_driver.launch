@@ -1,0 +1,33 @@
+<launch>
+
+  <arg name="timeout" default="5" />
+  <arg name="front_left_motor" default="4" />
+  <arg name="front_right_motor" default="1" />
+  <arg name="rear_left_motor" default="3" />
+  <arg name="rear_right_motor" default="2" />
+  <arg name="maxspeed" default="0.4" />
+  <arg name="minspeed" default="0.1" />
+  <arg name="wheelbase" default="0.2" />
+  <arg name="turnspeed" default="1.0" />
+  <arg name="duty_factor" default="1.0" />
+  <arg name="wheel_radius" default="0.085" />
+  <arg name="wheel_left_right_distance" default="0.165" />
+  <arg name="wheel_front_rear_distance" default="0.205" />
+
+  <node name="mecanum_motor_driver" pkg="bbblue_drivers" type="mecanum_motor_driver" respawn="true">
+    <param name="timeout" value="$(arg timeout)" />
+    <param name="front_left_motor" value="$(arg front_left_motor)" />
+    <param name="front_right_motor" value="$(arg front_right_motor)" />
+    <param name="rear_left_motor" value="$(arg rear_left_motor)" />
+    <param name="rear_right_motor" value="$(arg rear_right_motor)" />
+    <param name="maxspeed" value="$(arg maxspeed)" />
+    <param name="minspeed" value="$(arg minspeed)" />
+    <param name="wheelbase" value="$(arg wheelbase)" />
+    <param name="turnspeed" value="$(arg turnspeed)" />
+    <param name="duty_factor" value="$(arg duty_factor)" />
+    <param name="wheel_radius" value="$(arg wheel_radius)" />
+    <param name="wheel_left_right_distance" value="$(arg wheel_left_right_distance)" />
+    <param name="wheel_front_rear_distance" value="$(arg wheel_front_rear_distance)" />
+  </node>
+
+</launch>

@@ -66,6 +66,22 @@ Publish to cmd_vel manually
 
 `rostopic pub -1 /cmd_vel geometry_msgs/Twist -- '[1.0, 0.0, 0.0]' '[0.0, 0.0, 0]'``
 
+## Macanum motor driver
+
+### Parameter
+and default values
+
+*   ~front_left_motor = 4
+*   ~front_right_motor = 1
+*   ~rear_left_motor = 3
+*   ~rear_right_motor = 2
+*   ~timeout = 5
+*   ~maxspeed = 0.4
+*   ~minspeed = 0.1
+*   ~wheelbase = 0.2
+*   ~turnspeed = 1
+*   ~duty_factor = 1  - velocity to PWM duty cycle factor (simple linear approach)
+
 ## Battery state node
 ### Parameter
 and default values
